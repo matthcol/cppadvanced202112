@@ -17,7 +17,7 @@ int Polygon::size() const
 
 const Point2D& Polygon::summit(int index) const
 {
-    // TODO: insérer une instruction return ici
+    return m_summits[index];
 }
 
 const Point2D& Polygon::operator[](int index) const
