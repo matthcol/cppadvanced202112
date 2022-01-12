@@ -21,6 +21,7 @@ Point2D::Point2D(Point2D&& pt) noexcept:
 
 Point2D::~Point2D()
 {
+        std::clog << *this << " destroyed" << std::endl;
 }
 
 constexpr double Point2D::x() const

@@ -8,7 +8,7 @@
 using namespace std;
 
 class Polygon :
-    public Form, IMesurable2D
+    public Form, public IMesurable2D
 {
 private:
     vector <Point2D> m_summits;
