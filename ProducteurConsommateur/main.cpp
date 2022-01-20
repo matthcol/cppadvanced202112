@@ -58,8 +58,8 @@ void consume(double* buffer, uint32_t taille, uint32_t times, int deltaStartMs, 
 
 void run(double* buffer, uint32_t taille)
 {
-	std::thread threadProduce([=] {produce(buffer, taille, 30, 0, 100);});
-	std::thread threadConsume([=] {consume(buffer, taille, 30, 1000, 10);});
+	std::thread threadProduce([=] {produce(buffer, taille, 30, 500, 10);});
+	std::thread threadConsume([=] {consume(buffer, taille, 30, 0, 100);});
 	threadProduce.join();
 	threadConsume.join();
 }

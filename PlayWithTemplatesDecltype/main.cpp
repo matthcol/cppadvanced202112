@@ -1,4 +1,5 @@
 // SFINAE : Substitution Failure is not an Error
+// https://en.cppreference.com/w/cpp/language/sfinae
 // choix de surcharge entre fonction ou entre classes
 
 #include <iostream>
@@ -31,37 +32,40 @@ void test_f_ou_f() {
 class A 
 {
 public:
-	void duckme() {
+	int duckme() {
 		std::cout << "Duck duck ! " << std::endl;
+		return 3;
 	}
 };
 
 class B
 {
 public:
-	void fickme() {
+	double fickme() {
 		std::cout << "Fick you ! " << std::endl;
+		return 3.14;
 	}
 };
 
 class C
 {
 public:
-	void duckme() {
+	long long duckme() {
 		std::cout << "Duck you ! " << std::endl;
+		return 100000000000000LL;
 	}
 };
 
 template<class T>
-auto playWithT(T t) -> decltype(t.duckme())
+auto playWithT(T t) -> decltype(t.duckme(), void())
 {
-	t.duckme();
+	std::cout << t.duckme() << std::endl;
 }
 
 template<class T>
-auto playWithT(T t) -> decltype(t.fickme())
+auto playWithT(T t) -> decltype(t.fickme(), void())
 {
-	t.fickme();
+	std::cout << t.fickme() << std::endl;
 }
 
 void test_play_with_t() {
